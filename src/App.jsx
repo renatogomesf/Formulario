@@ -1,5 +1,5 @@
 import Form from "./pages/form/Formulario"
-import Span from "./components/Span"
+import './App.css'
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
     <>
       <h1>Formulário FullStack</h1>
       <Form></Form>
-      <Span></Span>
+      <span className="move">aaa</span>
     </>
   )
 }

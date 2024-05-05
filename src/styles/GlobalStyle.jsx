@@ -12,6 +12,7 @@ export const GlobalStyle =  createGlobalStyle`
     }
 
     body{
+        height: 100vh;
         background-color: ${({theme})=>theme.cor01};
         color: ${({theme})=>theme.cor06};
         position: relative;
