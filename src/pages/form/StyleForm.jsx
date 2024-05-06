@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Title = styled.h1`
+    text-align: center;
+    margin: 30px 0;
+`
+
+
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -20,9 +26,7 @@ export const Div = styled.div`
     flex-direction: column;
 `
 
-export const Label = styled.label`
-
-`
+export const Label = styled.label``
 
 export const Input = styled.input`
     width: 250px;
@@ -32,7 +36,24 @@ export const Input = styled.input`
     border-radius: 10px;
 
     &:focus{
-        /* outline: 3px solid ${({theme})=>theme.cor02}; */
         box-shadow: 0px 0px 40px ${({theme})=>theme.cor02};
+    }
+`
+
+export const Button = styled.button`
+    width: 110px;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    background-color: ${({theme})=>theme.cor03};
+    color: white;
+
+    &:hover{
+        transform: scale(1.1);
+        transition: 0.3s;
     }
 `

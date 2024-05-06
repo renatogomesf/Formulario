@@ -1,13 +1,29 @@
 import Form from "./pages/form/Formulario"
-import './App.css'
+import styled from "styled-components"
+
+
+window.addEventListener("mousemove",(event)=>{
+  let span = document.querySelector(".move")
+  span.style.top = `${event.clientY}px`
+  span.style.left = `${event.clientX}px`
+})
+
+
+const Span = styled.span`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  box-shadow: 0px 0px 300px 90px #5FCDD9;
+  z-index: -1;
+`
+
 
 function App() {
 
   return (
     <>
-      <h1>Formulário FullStack</h1>
       <Form></Form>
-      <span className="move">aaa</span>
+      <Span className="move"></Span>
     </>
   )
 }
