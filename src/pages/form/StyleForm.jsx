@@ -26,7 +26,9 @@ export const Div = styled.div`
     flex-direction: column;
 `
 
-export const Label = styled.label``
+export const Label = styled.label`
+
+`
 
 export const Input = styled.input`
     width: 250px;
