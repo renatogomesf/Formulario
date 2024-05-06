@@ -20,7 +20,7 @@ export default function Formulario() {
                 <Wrapper>
                     <Div>
                         <Label>CPF</Label>
-                        <Input type="text" name="cpf" placeholder="Digite seu cpf"/>
+                        <Input type="text" name="cpf" placeholder="000.000.000-00"/>
                     </Div>
                     <Div>
                         <Label>Data de nascimento</Label>
@@ -31,11 +31,11 @@ export default function Formulario() {
                 <Wrapper>
                     <Div>
                         <Label>Telefone</Label>
-                        <Input type="text" name="phone" placeholder="Digite seu telefone"/>
+                        <Input type="text" name="phone" placeholder="(00) 0 0000-0000"/>
                     </Div>
                     <Div>
                         <Label>E-mail</Label>
-                        <Input type="text" name="email" placeholder="Digite seu e-mail"/>
+                        <Input type="text" name="email" placeholder="exemplo@hotmail.com"/>
                     </Div>
                 </Wrapper>
 
