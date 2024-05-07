@@ -1,4 +1,6 @@
+import Header from "./components/Header/Header"
 import Form from "./pages/form/Formulario"
+import Footer from "./components/Footer/Footer"
 import styled from "styled-components"
 
 
@@ -22,7 +24,9 @@ function App() {
 
   return (
     <>
+      <Header></Header>
       <Form></Form>
+      <Footer></Footer>
       <Span className="move"></Span>
     </>
   )

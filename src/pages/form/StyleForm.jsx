@@ -38,13 +38,13 @@ export const Input = styled.input`
     border-radius: 10px;
 
     &:focus{
-        box-shadow: 0px 0px 40px ${({theme})=>theme.cor02};
+        outline: 3px solid ${({theme})=>theme.cor04};
     }
 `
 
 export const Button = styled.button`
     width: 110px;
-    margin-top: 50px;
+    margin: 50px 0px;
     padding: 10px;
     border-radius: 10px;
     border: none;

@@ -16,4 +16,14 @@ export const GlobalStyle =  createGlobalStyle`
         color: ${({theme})=>theme.cor06};
         position: relative;
     }
+
+    ::-webkit-scrollbar{
+        background-color: ${({theme})=>theme.cor03};
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: white;
+        border-radius: 5px;
+    }
 `

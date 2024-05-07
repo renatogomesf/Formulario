@@ -1,9 +1,16 @@
 import { Label, Input, Form, Wrapper, Div, Title, Button } from "./StyleForm"
 
 export default function Formulario() {
+
+    const handlePreventDefault = (event) => {
+        event.preventDefault()
+    }
+
+
+
     return (
         <>
-            <Form>
+            <Form onSubmit={handlePreventDefault}>
                 <Title>Cadastro</Title>
 
                 <Wrapper>
