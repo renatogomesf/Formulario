@@ -4,19 +4,29 @@ import Footer from "./components/Footer/Footer"
 import styled from "styled-components"
 
 
+
 window.addEventListener("mousemove",(event)=>{
   let span = document.querySelector(".move")
+
   span.style.top = `${event.clientY}px`
   span.style.left = `${event.clientX}px`
+  span.style.display = "block"
+})
+
+
+window.addEventListener("mouseout",()=>{
+  let span = document.querySelector(".move")
+  span.style.display = "none"
 })
 
 
 const Span = styled.span`
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
-  box-shadow: 0px 0px 300px 90px #5FCDD9;
-  z-index: -1;
+  box-shadow: 0px 0px 700px 100px #5fcdd9a6;
+  z-index: -1000;
+  transform: translate(-50%, -50%);
 `
 
 

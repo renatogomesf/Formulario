@@ -8,7 +8,7 @@ export const Rodape = styled.footer`
 `
 
 export const Wrapper = styled.div`
-    padding: 10px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;

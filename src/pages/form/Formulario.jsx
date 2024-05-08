@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Label, Input, Form, Wrapper, Div, Title, Button } from "./StyleForm"
+import { Label, Input, Form, Wrapper, Div, Title, Button, Main } from "./StyleForm"
 import { useRef } from "react"
 
 
@@ -48,42 +48,44 @@ export default function Formulario() {
 
     return (
         <>
-            <Form onSubmit={handlePreventDefault}>
-                <Title>Cadastro</Title>
+            <Main>
+                <Form onSubmit={handlePreventDefault}>
+                    <Title>Cadastro</Title>
 
-                <Wrapper>
-                    <Div>
-                        <Label>Nome</Label>
-                        <Input ref={nome} type="text" name="name" placeholder="Digite seu nome" required/>
-                    </Div>
-                    <Div>
-                        <Label>Sobrenome</Label>
-                        <Input ref={sobrenome} type="text" name="lastname" placeholder="Digite seu sobrenome" required/>
-                    </Div>
-                </Wrapper>
+                    <Wrapper>
+                        <Div>
+                            <Label>Nome</Label>
+                            <Input ref={nome} type="text" name="name" placeholder="Digite seu nome" required/>
+                        </Div>
+                        <Div>
+                            <Label>Sobrenome</Label>
+                            <Input ref={sobrenome} type="text" name="lastname" placeholder="Digite seu sobrenome" required/>
+                        </Div>
+                    </Wrapper>
 
-                <Wrapper>
-                    <Div>
-                        <Label>Data de nascimento</Label>
-                        <Input ref={data_nascimento} type="date" name="date" required/>
-                    </Div>
-                    <Div>
-                        <Label>Telefone</Label>
-                        <Input ref={telefone} type="text" name="phone" placeholder="(00) 0 0000-0000" required/>
-                    </Div>
-                </Wrapper>
+                    <Wrapper>
+                        <Div>
+                            <Label>Data de nascimento</Label>
+                            <Input ref={data_nascimento} type="date" name="date" required/>
+                        </Div>
+                        <Div>
+                            <Label>Telefone</Label>
+                            <Input ref={telefone} type="text" name="phone" placeholder="(00) 0 0000-0000" required/>
+                        </Div>
+                    </Wrapper>
 
-                <Wrapper>
-                    <Div>
-                        <Label>E-mail</Label>
-                        <Input ref={email} type="email" name="email" placeholder="exemplo@hotmail.com" required/>
-                    </Div>
-                </Wrapper>
+                    <Wrapper>
+                        <Div>
+                            <Label>E-mail</Label>
+                            <Input ref={email} type="email" name="email" placeholder="exemplo@hotmail.com" required/>
+                        </Div>
+                    </Wrapper>
 
-                <Wrapper>
-                    <Button onClick={handleSubmit}>Cadastrar</Button>
-                </Wrapper>
-            </Form>
+                    <Wrapper>
+                        <Button onClick={handleSubmit}>Cadastrar</Button>
+                    </Wrapper>
+                </Form>
+            </Main>
         </>
     )
 }

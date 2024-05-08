@@ -1,16 +1,32 @@
 import styled from "styled-components";
 
+
+export const Main = styled.main`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+
 export const Title = styled.h1`
     text-align: center;
     margin: 30px 0;
 `
 
-
 export const Form = styled.form`
+    width: 100%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 30px 20px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 1px 32px black;
 `
 
 export const Wrapper = styled.div`
