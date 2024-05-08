@@ -43,7 +43,7 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
-    width: 110px;
+    width: 130px;
     margin: 50px 0px;
     padding: 10px;
     border-radius: 10px;
