@@ -1,5 +1,6 @@
-import { Div, Wrapper, Logo, Link, Topo } from "./StyleHeader"
+import { Ul, Wrapper, Logo, Li, Topo } from "./StyleHeader"
 
+import { Link } from "react-router-dom"
 
 export default function Header() {
     return (
@@ -7,20 +8,25 @@ export default function Header() {
             <Topo>
                 <Wrapper>
                     <Logo>Logo</Logo>
-                    <Div>
-                        <Link>
-                            <a href="">
-                                Cadastro
-                                <hr />
-                            </a>
+                    <Ul>
+                        <Link className="link" to={"/"}>
+                            <Li>
+                                <a href="">
+                                    Cadastro
+                                    <hr />
+                                </a>
+                            </Li>
                         </Link>
-                        <Link>
-                            <a href="">
-                                Consulta
-                                <hr />
-                            </a>
+
+                        <Link className="link" to={"/consultar"}>
+                            <Li>
+                                <a href="">
+                                    Consulta
+                                    <hr />
+                                </a>
+                            </Li>
                         </Link>
-                    </Div>
+                    </Ul>
                 </Wrapper>
             </Topo>
         </>

@@ -1,13 +1,15 @@
-import { Rodape, Logo, Wrapper } from "./StyleFooter"
+import { Rodape, Logo, Div, Wrapper } from "./StyleFooter"
 
 export default function Footer() {
     return (
         <>
-            <hr />
             <Rodape>
+                <hr />
                 <Wrapper>
-                    <Logo>Logo</Logo>
-                    <p>&copy; Renato Gomes</p>
+                    <Div>
+                        <Logo>Logo</Logo>
+                        <p>&copy; Renato Gomes</p>
+                    </Div>
                 </Wrapper>
             </Rodape>
         </>

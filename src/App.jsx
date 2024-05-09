@@ -1,8 +1,11 @@
 import Header from "./components/Header/Header"
-import Form from "./pages/form/Formulario"
+import Formulario from "./pages/cadastro/Formulario"
+import Consulta from "./pages/consulta/Consulta"
 import Footer from "./components/Footer/Footer"
+
 import styled from "styled-components"
 
+import { Routes, Route } from "react-router-dom"
 
 
 window.addEventListener("mousemove",(event)=>{
@@ -34,9 +37,16 @@ function App() {
 
   return (
     <>
-      <Header></Header>
-      <Form></Form>
-      <Footer></Footer>
+      <div className="app"> 
+        <Header></Header>
+        <main>
+          <Routes className="main">
+            <Route path="" element={<Formulario/>}/>
+            <Route path="/consultar" element={<Consulta/>}/>
+          </Routes>
+        </main>
+        <Footer></Footer>
+      </div>
       <Span className="move"></Span>
     </>
   )

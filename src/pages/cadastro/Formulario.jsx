@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Label, Input, Form, Wrapper, Div, Title, Button, Main } from "./StyleForm"
+import { Label, Input, Form, Wrapper, Div, Title, Button, Section } from "./StyleForm"
 import { useRef } from "react"
 
 
@@ -48,7 +48,7 @@ export default function Formulario() {
 
     return (
         <>
-            <Main>
+            <Section>
                 <Form onSubmit={handlePreventDefault}>
                     <Title>Cadastro</Title>
 
@@ -85,7 +85,7 @@ export default function Formulario() {
                         <Button onClick={handleSubmit}>Cadastrar</Button>
                     </Wrapper>
                 </Form>
-            </Main>
+            </Section>
         </>
     )
 }

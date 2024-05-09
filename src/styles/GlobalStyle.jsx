@@ -10,8 +10,14 @@ export const GlobalStyle =  createGlobalStyle`
         font-family: "Poppins", sans-serif;
     }
 
+    html{
+        height: 100%;
+    }
+
     body{
-        height: 100vh;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
         background-color: ${({theme})=>theme.cor01};
         color: ${({theme})=>theme.cor06};
         position: relative;
@@ -25,5 +31,11 @@ export const GlobalStyle =  createGlobalStyle`
     ::-webkit-scrollbar-thumb{
         background-color: white;
         border-radius: 5px;
+    }
+
+    .app{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 `

@@ -21,12 +21,20 @@ export const Logo = styled.div`
     font-size: 2rem;
 `
 
-export const Div = styled.div`
+export const Ul = styled.ul`
     display: flex;
     gap: 40px;
+
+    .link{
+        text-decoration: none;
+    }
 `
 
-export const Link = styled.div`
+export const Li = styled.li`
+
+    list-style: none;
+
+
     a{
         text-decoration: none;
         color: white;
