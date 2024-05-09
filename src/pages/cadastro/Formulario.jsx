@@ -9,20 +9,20 @@ export default function Formulario() {
         event.preventDefault()
     }
 
-    const nome = useRef()
-    const sobrenome = useRef()
-    const data_nascimento = useRef()
-    const telefone = useRef()
-    const email = useRef()
+    const nomeRef = useRef()
+    const sobrenomeRef = useRef()
+    const data_nascimentoRef = useRef()
+    const telefoneRef = useRef()
+    const emailRef = useRef()
 
     const handleSubmit = async () => {
         
         const data = {
-            nome: (nome.current.value),
-            sobrenome: (sobrenome.current.value),
-            data_nascimento: (data_nascimento.current.value),
-            telefone: (telefone.current.value),
-            email: (email.current.value),
+            nome: (nomeRef.current.value),
+            sobrenome: (sobrenomeRef.current.value),
+            data_nascimento: (data_nascimentoRef.current.value),
+            telefone: (telefoneRef.current.value),
+            email: (emailRef.current.value),
         }
 
         await axios.post('http://localhost:3000/cadastros', data)
@@ -31,13 +31,13 @@ export default function Formulario() {
             if(response.status == 201){
                 alert('Cadastro realizado com sucesso!')
 
-                nome.current.value = ''
-                sobrenome.current.value = ''
-                data_nascimento.current.value = ''
-                telefone.current.value = ''
-                email.current.value = ''
+                nomeRef.current.value = ''
+                sobrenomeRef.current.value = ''
+                data_nascimentoRef.current.value = ''
+                telefoneRef.current.value = ''
+                emailRef.current.value = ''
 
-                nome.current.focus()
+                nomeRef.current.focus()
             }
         })
         .catch((error)=>{
@@ -55,29 +55,29 @@ export default function Formulario() {
                     <Wrapper>
                         <Div>
                             <Label>Nome</Label>
-                            <Input ref={nome} type="text" name="name" placeholder="Digite seu nome" required/>
+                            <Input ref={nomeRef} type="text" name="name" placeholder="Digite seu nome" required/>
                         </Div>
                         <Div>
                             <Label>Sobrenome</Label>
-                            <Input ref={sobrenome} type="text" name="lastname" placeholder="Digite seu sobrenome" required/>
+                            <Input ref={sobrenomeRef} type="text" name="lastname" placeholder="Digite seu sobrenome" required/>
                         </Div>
                     </Wrapper>
 
                     <Wrapper>
                         <Div>
                             <Label>Data de nascimento</Label>
-                            <Input ref={data_nascimento} type="date" name="date" required/>
+                            <Input ref={data_nascimentoRef} type="date" name="date" required/>
                         </Div>
                         <Div>
                             <Label>Telefone</Label>
-                            <Input ref={telefone} type="text" name="phone" placeholder="(00) 0 0000-0000" required/>
+                            <Input ref={telefoneRef} type="text" name="phone" placeholder="(00) 0 0000-0000" required/>
                         </Div>
                     </Wrapper>
 
                     <Wrapper>
                         <Div>
                             <Label>E-mail</Label>
-                            <Input ref={email} type="email" name="email" placeholder="exemplo@hotmail.com" required/>
+                            <Input ref={emailRef} type="email" name="email" placeholder="exemplo@hotmail.com" required/>
                         </Div>
                     </Wrapper>
 

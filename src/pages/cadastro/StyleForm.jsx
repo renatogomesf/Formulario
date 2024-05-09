@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 30px;
     padding: 10px;
 `
@@ -46,6 +47,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
     width: 250px;
+    max-width: 250px;
     padding: 10px;
     outline: none;
     border: none;

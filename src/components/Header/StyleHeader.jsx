@@ -23,7 +23,7 @@ export const Logo = styled.div`
 
 export const Ul = styled.ul`
     display: flex;
-    gap: 40px;
+    gap: 30px;
 
     .link{
         text-decoration: none;
