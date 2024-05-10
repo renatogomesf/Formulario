@@ -6,14 +6,19 @@ import { useRef, useState } from "react"
 import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 
+
+
 export default function Consulta() {
     
     const idRef = useRef()
     const nomeRef = useRef()
     const sobrenomeRef = useRef()
 
+    const btnUpdateRef = useRef()
+    const btnDeleteRef = useRef()
+
     const [data,setData] = useState([])
-    console.log(data)
+
 
     const handleTodosCadastros = async () => {
         await axios.get('http://localhost:3000/cadastros')
@@ -24,6 +29,28 @@ export default function Consulta() {
         .catch((error)=>{
             console.log(error)
         })
+    }
+
+
+
+    const handleDelete = async (itemId) => {
+
+        const id = itemId
+
+        await axios.delete('http://localhost:3000/cadastros/' + id)
+        .then((response)=>{
+            console.log(response)
+            if(response.status == 200){
+                alert('Cadastro deletado com sucesso!')
+                handleTodosCadastros()
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+
+        console.log(itemId)
     }
 
 
@@ -62,9 +89,9 @@ export default function Consulta() {
                     <Cadastros>
                         {data.map((item,key)=>{
                             return (
-                                <Cadastro key={key}>
+                                <Cadastro id={key} key={key}>
                                     <Dados>
-                                        <Dado>{item.id}</Dado>
+                                        <Dado className="id">{item.id}</Dado>
                                         <Dado>{item.nome}</Dado>
                                         <Dado>{item.sobrenome}</Dado>
                                         <Dado>{item.data_nascimento}</Dado>
@@ -72,8 +99,13 @@ export default function Consulta() {
                                         <Dado>{item.email}</Dado>
                                     </Dados>
                                     <Funcao>
-                                        <FaPen className="btn"/>
-                                        <FaTrash className="btn"/>
+                                        <button className="btnUpdate" onClick={''}>
+                                            <FaPen />   
+                                        </button>
+
+                                        <button ref={btnDeleteRef} className="btnDelete" onClick={()=>handleDelete(item.id)} >
+                                            <FaTrash />
+                                        </button>
                                     </Funcao>
                                 </Cadastro>
                             )

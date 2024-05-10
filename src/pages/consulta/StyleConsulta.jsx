@@ -117,6 +117,11 @@ export const Dados =  styled.div`
     width: 100%;
     padding: 5px;
 
+    .id{
+        background-color: ${({theme})=>theme.cor03};
+        color: white;
+    }
+
     @media (max-width: 700px) {
         border-radius: 10px 10px 0px 10px;
     }
@@ -140,12 +145,20 @@ export const Funcao = styled.div`
     align-items: center;
     justify-content: center;
     gap: 40px;
-    padding: 20px;
+    padding: 10px 20px;
 
-    .btn{
+    .btnUpdate,
+    .btnDelete{
         font-size: 1.1rem;
         cursor: pointer;
         transition: 0.4s;
+        background-color: transparent;
+        border: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
 
         &:hover{
             transform: scale(1.3);
