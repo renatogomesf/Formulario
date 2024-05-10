@@ -87,18 +87,39 @@ export const Cadastros = styled.ul`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     margin: 10px;
 `
 
 export const Cadastro = styled.li`
-    background-color: ${({theme})=>theme.cor06};
+    /* background-color: ${({theme})=>theme.cor06}; */
     color: black;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     list-style: none;
     display: flex;
+    justify-content: end;
+    /* flex-wrap: wrap; */
+    /* gap: 10px; */
+    width: 100%;
+
+    @media (max-width: 700px) {
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+    }
+`
+
+export const Dados =  styled.div`
+    background-color: ${({theme})=>theme.cor06};
+    border-radius: 10px 0px 0px 10px;
+    display: flex;
+    align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    padding: 5px;
+
+    @media (max-width: 700px) {
+        border-radius: 10px 10px 0px 10px;
+    }
 `
 
 export const Dado = styled.span`
@@ -106,8 +127,33 @@ export const Dado = styled.span`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
     padding: 10px;
     border-radius: 5px;
     font-weight: 500;
+`
+
+export const Funcao = styled.div`
+    background-color: ${({theme})=>theme.cor03};
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+
+    .btn{
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.4s;
+
+        &:hover{
+            transform: scale(1.3);
+            transition: 0.4s;
+        }
+    }
+
+    @media (max-width: 700px) {
+        border-radius: 0px 0px 10px 10px;
+    }
 `
