@@ -102,6 +102,7 @@ export const Cadastro = styled.li`
     /* gap: 10px; */
     width: 100%;
 
+
     @media (max-width: 700px) {
         /* flex-direction: column; */
         flex-wrap: wrap;
@@ -169,4 +170,11 @@ export const Funcao = styled.div`
     @media (max-width: 700px) {
         border-radius: 0px 0px 10px 10px;
     }
+`
+
+export const TelaUpdate = styled.div`
+    display: none;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
 `

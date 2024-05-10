@@ -1,4 +1,6 @@
-import { Section, Article, Wrapper, Title, Div, Label, Input, Button, Cadastros, Cadastro, Dados, Dado, Funcao } from "./StyleConsulta"
+import Update from '../../components/Update/Update'
+
+import { Section, Article, Wrapper, Title, Div, Label, Input, Button, Cadastros, Cadastro, Dados, Dado, Funcao, TelaUpdate } from "./StyleConsulta"
 
 import axios from "axios"
 import { useRef, useState } from "react"
@@ -14,8 +16,8 @@ export default function Consulta() {
     const nomeRef = useRef()
     const sobrenomeRef = useRef()
 
-    const btnUpdateRef = useRef()
-    const btnDeleteRef = useRef()
+    const [dadosUpdate, setDadosUpdate] =useState([])
+
 
     const [data,setData] = useState([])
 
@@ -54,6 +56,14 @@ export default function Consulta() {
     }
 
 
+    const handleShow = (item) => {
+        const update = document.querySelector('.update')
+        update.style.display = 'block'
+
+        setDadosUpdate(item)
+    }
+
+
     return (
         <>
             <Section>
@@ -89,7 +99,7 @@ export default function Consulta() {
                     <Cadastros>
                         {data.map((item,key)=>{
                             return (
-                                <Cadastro id={key} key={key}>
+                                <Cadastro key={key}>
                                     <Dados>
                                         <Dado className="id">{item.id}</Dado>
                                         <Dado>{item.nome}</Dado>
@@ -98,21 +108,28 @@ export default function Consulta() {
                                         <Dado>{item.telefone}</Dado>
                                         <Dado>{item.email}</Dado>
                                     </Dados>
+
                                     <Funcao>
-                                        <button className="btnUpdate" onClick={''}>
+                                        <button className="btnUpdate" onClick={()=>handleShow(item)}>
                                             <FaPen />   
                                         </button>
 
-                                        <button ref={btnDeleteRef} className="btnDelete" onClick={()=>handleDelete(item.id)} >
+                                        <button className="btnDelete" onClick={()=>handleDelete(item.id)} >
                                             <FaTrash />
                                         </button>
                                     </Funcao>
                                 </Cadastro>
                             )
                         })}
+
                     </Cadastros>
 
+
                 </Article>
+                <TelaUpdate className='update'>
+                    <Update dadosUpdate={dadosUpdate}/>
+                </TelaUpdate>
+                
             </Section>
         </>
     )

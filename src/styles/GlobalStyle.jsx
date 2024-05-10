@@ -20,7 +20,7 @@ export const GlobalStyle =  createGlobalStyle`
         flex-direction: column;
         background-color: ${({theme})=>theme.cor01};
         color: ${({theme})=>theme.cor06};
-        position: relative;
+        position: relative !important;
     }
 
     ::-webkit-scrollbar{
