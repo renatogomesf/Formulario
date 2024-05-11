@@ -13,7 +13,7 @@ export const Title = styled.h1`
     margin-top: 20px;
 `
 
-export const Form = styled.form`
+export const Form = styled.div`
     width: 100%;
     max-width: 1000px;
     display: flex;
@@ -21,10 +21,9 @@ export const Form = styled.form`
     justify-content: center;
     align-items: center;
     margin: 20px;
+    padding: 10px;
     border-radius: 15px;
-    background-color: white;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: white !important;
     box-shadow: 0px 1px 32px black;
 `
 

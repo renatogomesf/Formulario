@@ -1,14 +1,11 @@
-import axios from "axios"
+// import axios from "axios"
 import { Label, Input, Form, Wrapper, Div, Title, Button, Section } from "./StyleUpdate"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 import { TelaUpdate } from "../../pages/consulta/StyleConsulta"
 
 export default function Update(props) {
 
-    const handlePreventDefault = (event) => {
-        event.preventDefault()
-    }
 
     const nomeRef = useRef()
     const sobrenomeRef = useRef()
@@ -22,75 +19,56 @@ export default function Update(props) {
 
         const update = document.querySelector(".update")
         update.style.display = 'none'
+
+
+        console.log(nomeRef.current.value)
+        console.log(sobrenomeRef.current.value)
+        console.log(data_nascimentoRef.current.value)
+        console.log(telefoneRef.current.value)
+        console.log(emailRef.current.value)
     }  
 
+    useEffect(()=>{
+        nomeRef.current.value = props.dadosUpdate.nome
+        sobrenomeRef.current.value = props.dadosUpdate.sobrenome
+        data_nascimentoRef.current.value = props.dadosUpdate.data_nascimento
+        telefoneRef.current.value = props.dadosUpdate.telefone
+        emailRef.current.value = props.dadosUpdate.email
+    })
 
-    const handleSubmit = async () => {
-        
-        const data = {
-            nome: (nomeRef.current.value),
-            sobrenome: (sobrenomeRef.current.value),
-            data_nascimento: (data_nascimentoRef.current.value),
-            telefone: (telefoneRef.current.value),
-            email: (emailRef.current.value),
-        }
-
-        await axios.post('http://localhost:3000/cadastros/', data)
-        .then((response)=>{
-            console.log(response)
-            if(response.status == 201){
-                alert('Cadastro atualizado com sucesso!')
-
-                nomeRef.current.value = ''
-                sobrenomeRef.current.value = ''
-                data_nascimentoRef.current.value = ''
-                telefoneRef.current.value = ''
-                emailRef.current.value = ''
-
-            }
-
-            handleClose()
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-    }
-
- 
-    console.log(props.dadosUpdate)
 
     return (
         <>
             <Section>
-                <Form onSubmit={handlePreventDefault}>
+                <Form>
                     <Title>Atualizar</Title>
 
                     <Wrapper>
                         <Div>
                             <Label>Nome</Label>
-                            <Input ref={nomeRef} type="text" name="name" value={props.dadosUpdate.nome} placeholder="Digite seu nome" required/>
+                            <Input ref={nomeRef}  type="text" name="name" required/>
                         </Div>
                         <Div>
                             <Label>Sobrenome</Label>
-                            <Input ref={sobrenomeRef} type="text" name="lastname" value={props.dadosUpdate.sobrenome} placeholder="Digite seu sobrenome" required/>
+                            <Input ref={sobrenomeRef} type="text" name="lastname" required/>
                         </Div>
                     </Wrapper>
 
                     <Wrapper>
                         <Div>
                             <Label>Data de nascimento</Label>
-                            <Input ref={data_nascimentoRef} type="date" name="date" value={props.dadosUpdate.data_nascimento} required/>
+                            <Input ref={data_nascimentoRef} type="date" name="date" required/>
                         </Div>
                         <Div>
                             <Label>Telefone</Label>
-                            <Input ref={telefoneRef} type="text" name="phone" value={props.dadosUpdate.telefone}  placeholder="(00) 0 0000-0000" required/>
+                            <Input ref={telefoneRef} type="text" name="phone" required/>
                         </Div>
                     </Wrapper>
 
                     <Wrapper>
                         <Div>
                             <Label>E-mail</Label>
-                            <Input ref={emailRef} type="email" name="email" value={props.dadosUpdate.email}  placeholder="exemplo@hotmail.com" required/>
+                            <Input ref={emailRef} type="email" name="email" required/>
                         </Div>
                     </Wrapper>
 
@@ -102,3 +80,4 @@ export default function Update(props) {
         </>
     )
 }
+

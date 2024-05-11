@@ -27,6 +27,7 @@ export const Ul = styled.ul`
 
     .link{
         text-decoration: none;
+        color: white;
     }
 `
 
@@ -35,15 +36,11 @@ export const Li = styled.li`
     list-style: none;
 
 
-    a{
-        text-decoration: none;
-        color: white;
-
-        &:hover > hr{
-            width: 100%;
-            transition: 0.5s;
-        }
+    &:hover > hr{
+        width: 100%;
+        transition: 0.5s;
     }
+
 
     hr{
         border: none;

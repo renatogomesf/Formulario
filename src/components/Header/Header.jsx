@@ -11,19 +11,15 @@ export default function Header() {
                     <Ul>
                         <Link className="link" to={"/"}>
                             <Li>
-                                <a href="">
-                                    Cadastro
-                                    <hr />
-                                </a>
+                                Cadastro
+                                <hr />
                             </Li>
                         </Link>
 
                         <Link className="link" to={"/consultar"}>
                             <Li>
-                                <a href="">
-                                    Consulta
-                                    <hr />
-                                </a>
+                                Consulta
+                                <hr />
                             </Li>
                         </Link>
                     </Ul>

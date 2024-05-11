@@ -123,9 +123,8 @@ export default function Consulta() {
                         })}
 
                     </Cadastros>
-
-
                 </Article>
+                
                 <TelaUpdate className='update'>
                     <Update dadosUpdate={dadosUpdate}/>
                 </TelaUpdate>
