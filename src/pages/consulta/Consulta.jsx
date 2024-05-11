@@ -25,12 +25,73 @@ export default function Consulta() {
     const handleTodosCadastros = async () => {
         await axios.get('http://localhost:3000/cadastros')
         .then((response)=>{
+            console.log(response)
             const data = response.data
             setData(data)
         })
         .catch((error)=>{
             console.log(error)
         })
+    }
+
+
+    const handleFiltroCadastros = async () => {
+
+        if(idRef.current.value !== ''){
+
+            const id = idRef.current.value
+
+            await axios.get('http://localhost:3000/cadastrosId/' + id)
+            .then((response)=>{
+                console.log(response)
+                if(response.status == 200){
+                    alert('Cadastro encontrado com sucesso!')
+                    const data = response.data
+                    setData(data)
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+        }else if(nomeRef.current.value !== ''){
+
+            const nome = nomeRef.current.value
+
+            await axios.get('http://localhost:3000/cadastrosNome/' + nome)
+            .then((response)=>{
+                console.log(response)
+                if(response.status == 200){
+                    alert('Cadastro encontrado com sucesso!')
+                    const data = response.data
+                    setData(data)
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+        }else if(sobrenomeRef.current.value !== ''){
+
+            const sobrenome = sobrenomeRef.current.value
+
+            await axios.get('http://localhost:3000/cadastrosSobrenome/' + sobrenome)
+            .then((response)=>{
+                console.log(response)
+                if(response.status == 200){
+                    alert('Cadastro encontrado com sucesso!')
+                    const data = response.data
+                    setData(data)
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        }
+
+        idRef.current.value = ''
+        nomeRef.current.value = ''
+        sobrenomeRef.current.value = ''
     }
 
 
@@ -50,9 +111,6 @@ export default function Consulta() {
         .catch((error)=>{
             console.log(error)
         })
-
-
-        console.log(itemId)
     }
 
 
@@ -86,7 +144,7 @@ export default function Consulta() {
 
                     <Wrapper>
 
-                        <Button>Consultar pelo filtro</Button>
+                        <Button onClick={handleFiltroCadastros}>Consultar pelo filtro</Button>
 
                         <Button onClick={handleTodosCadastros}>Ver todos os cadastros</Button>
 
