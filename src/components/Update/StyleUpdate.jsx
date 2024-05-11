@@ -36,6 +36,16 @@ export const Wrapper = styled.div`
     padding: 10px;
 `
 
+export const Botoes = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+    padding: 10px;
+`
+
 export const Div = styled.div`
     display: flex;
     flex-direction: column;
@@ -62,7 +72,6 @@ export const Input = styled.input`
 
 export const Button = styled.button`
     width: 130px;
-    margin: 10px 0px;
     padding: 10px;
     border-radius: 10px;
     border: none;

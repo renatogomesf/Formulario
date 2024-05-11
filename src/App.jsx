@@ -23,13 +23,17 @@ window.addEventListener("mouseout",()=>{
 })
 
 
-const Span = styled.span`
+export const Span = styled.span`
   position: fixed;
   top: 20px;
   left: 20px;
   box-shadow: 0px 0px 700px 100px #5fcdd9a6;
   z-index: -1000;
   transform: translate(-50%, -50%);
+
+  @media (max-width: 700px) {
+    box-shadow: 0px 0px 0px 0px ;
+  }
 `
 
 

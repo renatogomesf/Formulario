@@ -126,7 +126,7 @@ export default function Consulta() {
                 </Article>
                 
                 <TelaUpdate className='update'>
-                    <Update dadosUpdate={dadosUpdate}/>
+                    <Update dadosUpdate={dadosUpdate} todosCadastros={handleTodosCadastros}/>
                 </TelaUpdate>
                 
             </Section>
