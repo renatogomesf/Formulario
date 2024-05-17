@@ -59,6 +59,9 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 130px;
     margin: 50px 0px;
     padding: 10px;
@@ -73,6 +76,23 @@ export const Button = styled.button`
     &:hover{
         transform: scale(1.1);
         transition: 0.3s;
+    }
+
+
+    .loading{
+        font-size: 1.7rem;
+        animation: loading 1s infinite linear;
+    }
+
+
+    @keyframes loading {
+        from{
+            transform: rotate(0deg);
+        }
+
+        to{
+            transform: rotate(360deg);
+        }
     }
 `
 
@@ -102,11 +122,6 @@ export const Popup = styled.div`
 
         .check{
             color: #00df00;
-            font-size: 1.5rem;
-        }
-
-        .alerta{
-            color: #bbbb00;
             font-size: 1.5rem;
         }
 

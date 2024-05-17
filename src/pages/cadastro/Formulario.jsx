@@ -3,15 +3,17 @@ import { Label, Input, Form, Wrapper, Div, Title, Button, Section, Popup } from 
 import { useRef, useState } from "react"
 
 import { IoMdCheckbox } from "react-icons/io";
-import { MdError } from "react-icons/md";
 import { TbCircleLetterXFilled } from "react-icons/tb";
+import { LuLoader2 } from "react-icons/lu";
 
 
 export default function Formulario() {
 
     const [validation,setValidation] = useState()
-    const [alert,setAlert] = useState()
 
+    const [loading,setLoading] = useState(false)
+
+    
     const handlePreventDefault = (event) => {
         event.preventDefault()
     }
@@ -29,17 +31,6 @@ export default function Formulario() {
         )
     }
 
-    const feedBackAlert = ()=> {
-        return(
-            <Popup className="popup">
-                <p>
-                    Preencha todos os campos!
-                    <MdError className="alerta"/>
-                </p>
-                <hr  className="barra"/>
-            </Popup>
-        )
-    }
 
     const feedBackErro = ()=> {
         return(
@@ -59,7 +50,7 @@ export default function Formulario() {
         const popup = document.querySelector('.popup')
         const barra = document.querySelector('.barra')
 
-        popup.style.left = '20px'
+        popup.style.left = '10px'
         popup.style.display = 'flex'
         barra.style.animationName = 'barra'
         barra.style.backgroundColor = '#00df00'
@@ -73,31 +64,14 @@ export default function Formulario() {
         },6000)
     }
 
-    const handleFeedBackAlert = () => {
 
-        const popup = document.querySelector('.popup')
-        const barra = document.querySelector('.barra')
-
-        popup.style.left = '20px'
-        popup.style.display = 'flex'
-        barra.style.animationName = 'barra'
-        barra.style.backgroundColor = '#bbbb00'
-
-        setTimeout(()=>{
-            popup.style.left = '-400px'
-        },5000)
-
-        setTimeout(()=>{
-            barra.style.animationName = 'none'
-        },6000)
-    }
 
     const handleFeedBackErro = () => {
 
         const popup = document.querySelector('.popup')
         const barra = document.querySelector('.barra')
 
-        popup.style.left = '20px'
+        popup.style.left = '10px'
         popup.style.display = 'flex'
         barra.style.animationName = 'barra'
         barra.style.backgroundColor = '#cc0000'
@@ -122,12 +96,9 @@ export default function Formulario() {
 
         if(nomeRef.current.value=='' || sobrenomeRef.current.value=='' || data_nascimentoRef.current.value=='' || telefoneRef.current.value=='' || emailRef.current.value==''){
 
-            setAlert(true)
-            handleFeedBackAlert()
 
         }else{
-
-            setAlert(false)
+            setLoading(true)
 
             const data = {
                 nome: (nomeRef.current.value),
@@ -142,6 +113,7 @@ export default function Formulario() {
                 if(response.status == 201){
                     setValidation(true)
                     handleFeedBackOk()
+                    setLoading(false)
     
                     nomeRef.current.value = ''
                     sobrenomeRef.current.value = ''
@@ -156,6 +128,7 @@ export default function Formulario() {
                 if(error){
                     setValidation(false)
                     handleFeedBackErro()
+                    setLoading(false)
                     console.log(error)
                 }
             })
@@ -199,11 +172,13 @@ export default function Formulario() {
                     </Wrapper>
 
                     <Wrapper>
-                        <Button onClick={handleSubmit}>Cadastrar</Button>
+                        <Button onClick={handleSubmit}>
+                            {loading?<LuLoader2 className="loading"/>:<p>Cadastrar</p>}
+                        </Button>
                     </Wrapper>
                 </Form>
 
-                {alert?feedBackAlert():(validation?feedBackOk():feedBackErro())}
+                {validation?feedBackOk():feedBackErro()}
 
             </Section>
         </>
