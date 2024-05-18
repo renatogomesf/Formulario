@@ -178,3 +178,69 @@ export const TelaUpdate = styled.div`
     top: 0px;
     z-index: 100;
 `
+
+
+export const Popup = styled.div`
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    left: -400px;
+    bottom: 50px;
+    color: black;
+    font-weight: 500;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 30px black;
+
+    transition: 0.6s;
+
+    p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .check{
+            color: #00df00;
+            font-size: 1.5rem;
+        }
+
+        .alert{
+            color: #d0df00;
+            font-size: 1.5rem;
+        }
+
+        .erro{
+            color: #cc0000;
+            font-size: 1.5rem;
+        }
+    }
+
+    .barra{
+        width: 0%;
+        height: 7px;
+        border: none;
+        background-color: none;
+        border-radius: 3.5px;
+
+        animation-name: none;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+    }
+
+
+    @keyframes barra {
+        from{
+            width: 0%;
+        }
+
+        to{
+            width: 100%;
+        }
+    }
+`

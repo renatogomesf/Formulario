@@ -1,12 +1,17 @@
 import Update from '../../components/Update/Update'
 
-import { Section, Article, Wrapper, Title, Div, Label, Input, Button, Cadastros, Cadastro, Dados, Dado, Funcao, TelaUpdate } from "./StyleConsulta"
+import { Section, Article, Wrapper, Title, Div, Label, Input, Button, Cadastros, Cadastro, Dados, Dado, Funcao, TelaUpdate, Popup } from "./StyleConsulta"
 
 import axios from "axios"
 import { useRef, useState } from "react"
 
 import { FaPen } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
+
+import { IoMdCheckbox } from "react-icons/io";
+import { TbCircleLetterXFilled } from "react-icons/tb";
+import { MdError } from "react-icons/md";
+import { LuLoader2 } from "react-icons/lu";
 
 
 
@@ -18,19 +23,70 @@ export default function Consulta() {
 
     const [dadosUpdate, setDadosUpdate] =useState([])
 
-
     const [data,setData] = useState([])
+
+
+    const [retorno,setRetorno] = useState()
+
+    const [loading,setLoading] = useState(false)
+
+
+
+
+    const feedBack = ()=> {
+        return(
+            <Popup className="popup">
+                <p>
+                    Cadastro Realizado com sucesso!
+                    <IoMdCheckbox className="check"/>
+                </p>
+                <hr  className="barra"/>
+            </Popup>
+        )
+    }
+
+
+
+    const handleFeedBack = (cor) => {
+
+        const popup = document.querySelector('.popup')
+        const barra = document.querySelector('.barra')
+
+        popup.style.left = '10px'
+        popup.style.display = 'flex'
+        barra.style.animationName = 'barra'
+        barra.style.backgroundColor = cor
+
+        setTimeout(()=>{
+            popup.style.left = '-400px'
+        },5000)
+
+        setTimeout(()=>{
+            barra.style.animationName = 'none'
+        },6000) 
+    }
+
+
+
 
 
     const handleTodosCadastros = async () => {
         await axios.get('http://localhost:3000/cadastros')
         .then((response)=>{
-            console.log(response)
             const data = response.data
             setData(data)
+
         })
-        .catch((error)=>{
-            console.log(error)
+        .catch(()=>{
+            setRetorno(
+                <p>
+                    Não foi possível realizar a consulta. <br/> Tente novamente mais tarde.
+                    <TbCircleLetterXFilled  className="erro"/>
+                </p>
+            )
+
+            const cor = '#cc0000'
+            handleFeedBack(cor)
         })
     }
 
@@ -43,15 +99,37 @@ export default function Consulta() {
 
             await axios.get('http://localhost:3000/cadastrosId/' + id)
             .then((response)=>{
-                console.log(response)
-                if(response.status == 200){
-                    alert('Cadastro encontrado com sucesso!')
+
+                if(response.data.length == 0){
+
+                    setRetorno(
+                        <p>
+                            ID "{id}" não encontrado!
+                            <MdError className='alert'/>
+                        </p>
+                    )
+
+                    const cor = '#d0df00'
+                    handleFeedBack(cor)
+
+                }else if(response.data.length !== 0){
+
                     const data = response.data
                     setData(data)
                 }
             })
-            .catch((error)=>{
-                console.log(error)
+            .catch(()=>{
+
+                setRetorno(
+                    <p>
+                        Não foi possível realizar a consulta. <br/> Tente novamente mais tarde.
+                        <TbCircleLetterXFilled  className="erro"/>
+                    </p>
+                )
+    
+                const cor = '#cc0000'
+                handleFeedBack(cor)
+
             })
 
         }else if(nomeRef.current.value !== ''){
@@ -60,15 +138,35 @@ export default function Consulta() {
 
             await axios.get('http://localhost:3000/cadastrosNome/' + nome)
             .then((response)=>{
-                console.log(response)
-                if(response.status == 200){
-                    alert('Cadastro encontrado com sucesso!')
+
+                if(response.data.length == 0){
+
+                    setRetorno(
+                        <p>
+                            Nome "{nome}" não encontrado!
+                            <MdError className='alert'/>
+                        </p>
+                    )
+
+                    const cor = '#d0df00'
+                    handleFeedBack(cor)
+
+                }else if(response.data.length !== 0){
+
                     const data = response.data
                     setData(data)
                 }
             })
-            .catch((error)=>{
-                console.log(error)
+            .catch(()=>{
+                setRetorno(
+                    <p>
+                        Não foi possível realizar a consulta. <br/> Tente novamente mais tarde.
+                        <TbCircleLetterXFilled  className="erro"/>
+                    </p>
+                )
+
+                const cor = '#cc0000'
+                handleFeedBack(cor)
             })
 
         }else if(sobrenomeRef.current.value !== ''){
@@ -77,15 +175,35 @@ export default function Consulta() {
 
             await axios.get('http://localhost:3000/cadastrosSobrenome/' + sobrenome)
             .then((response)=>{
-                console.log(response)
-                if(response.status == 200){
-                    alert('Cadastro encontrado com sucesso!')
+
+                if(response.data.length == 0){
+
+                    setRetorno(
+                        <p>
+                            Sobrenome "{sobrenome}" não encontrado!
+                            <MdError className='alert'/>
+                        </p>
+                    )
+
+                    const cor = '#d0df00'
+                    handleFeedBack(cor)
+
+                }else if(response.data.length !== 0){
+
                     const data = response.data
                     setData(data)
                 }
             })
-            .catch((error)=>{
-                console.log(error)
+            .catch(()=>{
+                setRetorno(
+                    <p>
+                        Não foi possível realizar a consulta. <br/> Tente novamente mais tarde.
+                        <TbCircleLetterXFilled  className="erro"/>
+                    </p>
+                )
+
+                const cor = '#cc0000'
+                handleFeedBack(cor)
             })
         }
 
@@ -186,6 +304,11 @@ export default function Consulta() {
                 <TelaUpdate className='update'>
                     <Update dadosUpdate={dadosUpdate} todosCadastros={handleTodosCadastros}/>
                 </TelaUpdate>
+
+                <Popup className="popup">
+                    {retorno}
+                    <hr  className="barra"/>
+                </Popup>
                 
             </Section>
         </>
