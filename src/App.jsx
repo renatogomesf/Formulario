@@ -45,8 +45,8 @@ function App() {
         <Header></Header>
         <main>
           <Routes className="main">
-            <Route path="/Formulario/" element={<Formulario/>}/>
-            <Route path="/Consultar/" element={<Consulta/>}/>
+            <Route path="/Formulario" element={<Formulario/>}/>
+            <Route path="/Consultar" element={<Consulta/>}/>
           </Routes>
         </main>
         <Footer></Footer>
