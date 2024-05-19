@@ -97,7 +97,7 @@ export const Button = styled.button`
 `
 
 export const Popup = styled.div`
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;

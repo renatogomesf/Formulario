@@ -9,9 +9,10 @@ import { LuLoader2 } from "react-icons/lu";
 
 export default function Formulario() {
 
-    const [validation,setValidation] = useState()
-
     const [loading,setLoading] = useState(false)
+
+
+    const [retorno,setRetorno] = useState()
 
     
     const handlePreventDefault = (event) => {
@@ -19,62 +20,14 @@ export default function Formulario() {
     }
 
 
-    const feedBackOk = ()=> {
-        return(
-            <Popup className="popup">
-                <p>
-                    Cadastro Realizado com sucesso!
-                    <IoMdCheckbox className="check"/>
-                </p>
-                <hr  className="barra"/>
-            </Popup>
-        )
-    }
-
-
-    const feedBackErro = ()=> {
-        return(
-            <Popup className="popup">
-                <p>
-                    Não foi possível cadastrar. <br/> Tente novamente mais tarde.
-                    <TbCircleLetterXFilled  className="erro"/>
-                </p>
-                <hr  className="barra"/>
-            </Popup>
-        )
-    }
-
-
-    const handleFeedBackOk = () => {
+    const handleFeedBack = (cor) => {
 
         const popup = document.querySelector('.popup')
         const barra = document.querySelector('.barra')
 
         popup.style.left = '10px'
-        popup.style.display = 'flex'
         barra.style.animationName = 'barra'
-        barra.style.backgroundColor = '#00df00'
-
-        setTimeout(()=>{
-            popup.style.left = '-400px'
-        },5000)
-
-        setTimeout(()=>{
-            barra.style.animationName = 'none'
-        },6000)
-    }
-
-
-
-    const handleFeedBackErro = () => {
-
-        const popup = document.querySelector('.popup')
-        const barra = document.querySelector('.barra')
-
-        popup.style.left = '10px'
-        popup.style.display = 'flex'
-        barra.style.animationName = 'barra'
-        barra.style.backgroundColor = '#cc0000'
+        barra.style.backgroundColor = cor
 
         setTimeout(()=>{
             popup.style.left = '-400px'
@@ -111,8 +64,17 @@ export default function Formulario() {
             await axios.post('http://localhost:3000/cadastros', data)
             .then((response)=>{
                 if(response.status == 201){
-                    setValidation(true)
-                    handleFeedBackOk()
+
+                    setRetorno(
+                        <p>
+                            Cadastro Realizado com sucesso!
+                            <IoMdCheckbox className="check"/>
+                        </p>
+                    )
+        
+                    const cor = '#00df00'
+                    handleFeedBack(cor)
+
                     setLoading(false)
     
                     nomeRef.current.value = ''
@@ -124,13 +86,18 @@ export default function Formulario() {
                     nomeRef.current.focus()
                 }
             })
-            .catch((error)=>{
-                if(error){
-                    setValidation(false)
-                    handleFeedBackErro()
-                    setLoading(false)
-                    console.log(error)
-                }
+            .catch(()=>{
+                setLoading(false)
+
+                setRetorno(
+                    <p>
+                        Não foi possível cadastrar. <br/> Tente novamente mais  tarde.
+                        <TbCircleLetterXFilled  className="erro"/>
+                    </p>
+                )
+    
+                const cor = '#cc0000'
+                handleFeedBack(cor)
             })
         }
     }
@@ -177,8 +144,11 @@ export default function Formulario() {
                         </Button>
                     </Wrapper>
                 </Form>
-
-                {validation?feedBackOk():feedBackErro()}
+                
+                <Popup className="popup">
+                    {retorno}
+                    <hr  className="barra"/>
+                </Popup>
 
             </Section>
         </>
