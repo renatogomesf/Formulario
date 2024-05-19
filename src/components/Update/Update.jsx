@@ -1,12 +1,13 @@
 import axios from "axios"
 import { Label, Input, Form, Wrapper, Div, Title, Button, Section, Botoes } from "./StyleUpdate"
+
 import { useEffect, useRef } from "react"
 
 import { TelaUpdate } from "../../pages/consulta/StyleConsulta"
 
+
 export default function Update(props) {
 
-    const idRef = useRef()
     const nomeRef = useRef()
     const sobrenomeRef = useRef()
     const data_nascimentoRef = useRef()
@@ -19,18 +20,9 @@ export default function Update(props) {
 
         const update = document.querySelector(".update")
         update.style.display = 'none'
-
-        console.log(props.dadosUpdate)
-        // console.log(idRef.value)
-        console.log(nomeRef.current.value)
-        console.log(sobrenomeRef.current.value)
-        console.log(data_nascimentoRef.current.value)
-        console.log(telefoneRef.current.value)
-        console.log(emailRef.current.value)
     }  
 
     useEffect(()=>{
-        // idRef.value = props.dadosUpdate.id
         nomeRef.current.value = props.dadosUpdate.nome
         sobrenomeRef.current.value = props.dadosUpdate.sobrenome
         data_nascimentoRef.current.value = props.dadosUpdate.data_nascimento
@@ -53,15 +45,19 @@ export default function Update(props) {
 
         await axios.put('http://localhost:3000/cadastros/' + id, data)
         .then((response)=>{
-            console.log(response)
+
             if(response.status == 200){
-                alert('Cadastro atualizado com sucesso!')
                 handleClose()
+                
+                props.update(1)
+
                 props.todosCadastros()
             }
+
         })
-        .catch((error)=>{
-            console.log(error)
+        .catch(()=>{
+            handleClose()
+            props.update(2)
         })
     }
 
@@ -105,7 +101,9 @@ export default function Update(props) {
                         <Button onClick={handleSubmit}>Atualizar</Button>
                         <Button onClick={handleClose}>Cancelar</Button>
                     </Botoes>
+
                 </Form>
+
             </Section>
         </>
     )

@@ -11,7 +11,6 @@ import { FaTrash } from "react-icons/fa";
 import { IoMdCheckbox } from "react-icons/io";
 import { TbCircleLetterXFilled } from "react-icons/tb";
 import { MdError } from "react-icons/md";
-import { LuLoader2 } from "react-icons/lu";
 
 
 
@@ -21,30 +20,14 @@ export default function Consulta() {
     const nomeRef = useRef()
     const sobrenomeRef = useRef()
 
+    
     const [dadosUpdate, setDadosUpdate] =useState([])
+
 
     const [data,setData] = useState([])
 
 
     const [retorno,setRetorno] = useState()
-
-    const [loading,setLoading] = useState(false)
-
-
-
-
-    const feedBack = ()=> {
-        return(
-            <Popup className="popup">
-                <p>
-                    Cadastro Realizado com sucesso!
-                    <IoMdCheckbox className="check"/>
-                </p>
-                <hr  className="barra"/>
-            </Popup>
-        )
-    }
-
 
 
     const handleFeedBack = (cor) => {
@@ -53,7 +36,6 @@ export default function Consulta() {
         const barra = document.querySelector('.barra')
 
         popup.style.left = '10px'
-        popup.style.display = 'flex'
         barra.style.animationName = 'barra'
         barra.style.backgroundColor = cor
 
@@ -68,14 +50,12 @@ export default function Consulta() {
 
 
 
-
-
     const handleTodosCadastros = async () => {
+
         await axios.get('http://localhost:3000/cadastros')
         .then((response)=>{
             const data = response.data
             setData(data)
-
         })
         .catch(()=>{
             setRetorno(
@@ -93,7 +73,19 @@ export default function Consulta() {
 
     const handleFiltroCadastros = async () => {
 
-        if(idRef.current.value !== ''){
+        if(idRef.current.value == '' && nomeRef.current.value == '' && sobrenomeRef.current.value == ''){
+
+            setRetorno(
+                <p>
+                    Preencha algum campo para <br/> realizar a pesquisa por filtro.
+                    <MdError className='alert'/>
+                </p>
+            )
+
+            const cor = '#d0df00'
+            handleFeedBack(cor)
+
+        }else if(idRef.current.value !== ''){
 
             const id = idRef.current.value
 
@@ -220,14 +212,31 @@ export default function Consulta() {
 
         await axios.delete('http://localhost:3000/cadastros/' + id)
         .then((response)=>{
-            console.log(response)
+
             if(response.status == 200){
-                alert('Cadastro deletado com sucesso!')
+                setRetorno(
+                    <p>
+                        Cadastro deletado com sucesso!
+                        <IoMdCheckbox className="check"/>
+                    </p>
+                )
+
+                const cor = '#00df00'
+                handleFeedBack(cor)
+
                 handleTodosCadastros()
             }
         })
-        .catch((error)=>{
-            console.log(error)
+        .catch(()=>{
+            setRetorno(
+                <p>
+                    Não foi possível deletar. <br/> Tente novamente mais tarde.
+                    <TbCircleLetterXFilled  className="erro"/>
+                </p>
+            )
+
+            const cor = '#cc0000'
+            handleFeedBack(cor)
         })
     }
 
@@ -237,6 +246,33 @@ export default function Consulta() {
         update.style.display = 'block'
 
         setDadosUpdate(item)
+    }
+
+
+    const handleUpdate = (num)=> {
+
+        if(num == 1){
+            setRetorno(
+                <p>
+                    Cadastro atualizado com sucesso!
+                    <IoMdCheckbox className="check"/>
+                </p>
+            )
+            
+            const cor = '#00df00'
+            handleFeedBack(cor)
+
+        }else if(num == 2){
+            setRetorno(
+                <p>
+                    Não foi possível atualizar. <br/> Tente novamente mais tarde.
+                    <TbCircleLetterXFilled  className="erro"/>
+                </p>
+            )
+    
+            const cor = '#cc0000'
+            handleFeedBack(cor)
+        }
     }
 
 
@@ -262,9 +298,13 @@ export default function Consulta() {
 
                     <Wrapper>
 
-                        <Button onClick={handleFiltroCadastros}>Consultar pelo filtro</Button>
+                        <Button onClick={handleFiltroCadastros}>
+                            Consultar pelo filtro
+                        </Button>
 
-                        <Button onClick={handleTodosCadastros}>Ver todos os cadastros</Button>
+                        <Button onClick={handleTodosCadastros}>
+                            Ver todos os cadastros
+                        </Button>
 
                     </Wrapper>
 
@@ -302,7 +342,7 @@ export default function Consulta() {
                 </Article>
                 
                 <TelaUpdate className='update'>
-                    <Update dadosUpdate={dadosUpdate} todosCadastros={handleTodosCadastros}/>
+                    <Update dadosUpdate={dadosUpdate} todosCadastros={handleTodosCadastros} update={handleUpdate}/>
                 </TelaUpdate>
 
                 <Popup className="popup">
