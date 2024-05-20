@@ -41,7 +41,28 @@ Essas são as bibliotecas utilizadas no projeto:
 
 ## Como rodar o projeto
 
-Primeiro clone o repositório [Api-formulario](https://github.com/renatogomesf/Api-formulario)
+1) Baixe o [MySQL](https://dev.mysql.com/downloads/installer/) e faça a [instalação](https://www.youtube.com/watch?v=adIIAEc3Q04&list=PLx4x_zx8csUgQUjExcssR3utb3JIX6Kra&ab_channel=CFBCursos) do MySQL Workbench (lembre-se que a porta, usuário e senhas definidos na instalação serão usados na api (no arquivo .env) para estabelecer uma conexão);
+2) Crie crie um banco de dados com o nome que preferir (lembre-se que esse nome será usado dentro da api (no arquivo .env) para realizar a conexão);
+3) Após criar o banco de dados, selecione-o, abra uma Query crie a seguinte tabela:
+
+```
+   CREATE TABLE `cadastros` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `sobrenome` varchar(45) NOT NULL,
+  `data_nascimento` varchar(15) NOT NULL,
+  `telefone` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+```
+
+4) Após crirar o banco de dados e a tabela, clone o repositório [Api-formulario](https://github.com/renatogomesf/Api-formulario);
+5) Com o repositório em sua máquina, abra a pasta "Api-formulario-main" (pasta raiz do repositório) no terminal, digite `npm install` e tecle enter para a instalação das dependências;
+6) Após a instalação das dependências, abra o repositório no seu editor de código e mude o nome do arquivo `.env.CONFIG` para `.env`;
+7) Dentro do arquivo `.env`, preencha as variáveis de ambiente com os dados definidos na instalação do MySQL e o nome do banco de dados. **OBS: a porta padrão da api é a 3000. não mude!**;
+8) Após o preencher as variáveis, abra a pasta raiz do repositório no terminal e rode o servidor com o comando `npm run server`;
+9) Por fim, com o servidor rodando, já é possível utilizar o [Formulário](https://renatogomesf.github.io/Formulario/) por completo.
 
 ## Autor
 
