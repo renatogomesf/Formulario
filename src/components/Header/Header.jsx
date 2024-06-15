@@ -9,7 +9,7 @@ export default function Header() {
                 <Wrapper>
                     <Logo>Logo</Logo>
                     <Ul>
-                        <Link className="link" to={"/"}>
+                        <Link className="link" to={"/Formulario-MySQL"}>
                             <Li>
                                 Cadastro
                                 <hr />
