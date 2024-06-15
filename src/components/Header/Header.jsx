@@ -9,7 +9,7 @@ export default function Header() {
                 <Wrapper>
                     <Logo>Logo</Logo>
                     <Ul>
-                        <Link className="link" to={"/Formulario"}>
+                        <Link className="link" to={"/"}>
                             <Li>
                                 Cadastro
                                 <hr />

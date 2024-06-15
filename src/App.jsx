@@ -45,7 +45,7 @@ function App() {
         <Header></Header>
         <main>
           <Routes className="main">
-            <Route path="/Formulario-MySQL" element={<Formulario/>}/>
+            <Route path="/" element={<Formulario/>}/>
             <Route path="/Consultar" element={<Consulta/>}/>
           </Routes>
         </main>
