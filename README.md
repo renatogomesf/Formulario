@@ -1,10 +1,10 @@
-# Formulário
+# Formulário (MySQL)
 
 [![Static Badge](https://img.shields.io/badge/Licen%C3%A7a-MIT-green)](https://github.com/renatogomesf/Formulario/blob/main/LICENSE)
 
 ## Sobre o projeto
 
-https://renatogomesf.github.io/Formulario/
+https://renatogomesf.github.io/Formulario-MySQL/
 
 Formulário desenvolvido com o objetivo de demonstrar habilidades no consumo de API com **Axios**, criação de API com **Node.js**, manipulação de banco de dados com **MySQL** e, obviamente, a realização de um **CRUD** (Create, Read, Update, Delete) completo. O formulário é totalmente responsivo, se adaptando a vários tamanhos de telas.
 
