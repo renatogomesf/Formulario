@@ -318,11 +318,11 @@ export default function Consulta() {
                                 <Cadastro key={key}>
                                     <Dados>
                                         <Dado className="id">{item.id}</Dado>
-                                        <Dado>{item.nome}</Dado>
-                                        <Dado>{item.sobrenome}</Dado>
-                                        <Dado>{item.data_nascimento}</Dado>
-                                        <Dado>{item.telefone}</Dado>
-                                        <Dado>{item.email}</Dado>
+                                        <Dado><span>Nome</span>{item.nome}</Dado>
+                                        <Dado><span>Sobrenome</span>{item.sobrenome}</Dado>
+                                        <Dado><span>Data nasci.</span>{item.data_nascimento}</Dado>
+                                        <Dado><span>Telefone</span>{item.telefone}</Dado>
+                                        <Dado><span>E-mail</span>{item.email}</Dado>
                                     </Dados>
 
                                     <Funcao>

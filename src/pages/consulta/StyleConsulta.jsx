@@ -64,7 +64,6 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
-    /* width: 190px; */
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -92,19 +91,14 @@ export const Cadastros = styled.ul`
 `
 
 export const Cadastro = styled.li`
-    /* background-color: ${({theme})=>theme.cor06}; */
     color: black;
-    /* border-radius: 5px; */
     list-style: none;
     display: flex;
     justify-content: end;
-    /* flex-wrap: wrap; */
-    /* gap: 10px; */
     width: 100%;
 
 
     @media (max-width: 700px) {
-        /* flex-direction: column; */
         flex-wrap: wrap;
     }
 `
@@ -136,6 +130,19 @@ export const Dado = styled.span`
     padding: 10px;
     border-radius: 5px;
     font-weight: 500;
+
+    span{
+        font-weight: bold;
+    }
+
+    @media (max-width: 450px) {
+        width: 100%;
+        
+        &:nth-child(even){
+            background-color: #ececec;
+        }
+    }
+
 `
 
 export const Funcao = styled.div`
