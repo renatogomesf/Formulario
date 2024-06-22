@@ -12,11 +12,11 @@ O projeto consiste em um formulário onde é possível cadastrar pessoas utiliza
 
 ## Layout mobile
 
-![mobile 1](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formul%C3%A1rio/mobile-1.png) ![mobile 2](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formul%C3%A1rio/mobile-2.png)
+![mobile 1](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formulário-mysql/mobile-1.png) ![mobile 2](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formulário-mysql/mobile-2.png)
 
 ## Layout web
 
-![web 1](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formul%C3%A1rio/web-1.png) ![web 2](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formul%C3%A1rio/web-2.png)
+![web 1](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formulário-mysql/web-1.png) ![web 2](https://raw.githubusercontent.com/renatogomesf/imagens-projetos/main/imagens/formulário-mysql/web-2.png)
 
 ## Tecnologias
 Essas são as tecnologías utilizadas no projeto:
