@@ -1,28 +1,36 @@
+
+// IMPORTAÇÃO DE COMPONENTES E PAGINAS
 import Header from "./components/Header/Header"
 import Formulario from "./pages/cadastro/Formulario"
 import Consulta from "./pages/consulta/Consulta"
 import Footer from "./components/Footer/Footer"
 
+
+// IMPORTAÇÃO DO STYLED-COMPONENTS
 import styled from "styled-components"
 
+
+// IMPORTAÇÕES DO REACT-ROUTER-DOM
 import { Routes, Route } from "react-router-dom"
 
 
+// FUNÇÃO QUE OBISERVA O EVENTO DE MOVIMENTO DO MOUSE NA TELA
 window.addEventListener("mousemove",(event)=>{
   let span = document.querySelector(".move")
-
   span.style.top = `${event.clientY}px`
   span.style.left = `${event.clientX}px`
   span.style.display = "block"
 })
 
 
+// FUNÇÃO QUE OBISERVA O EVENTO DE SAIDA DO MOUSE DA TELA
 window.addEventListener("mouseout",()=>{
   let span = document.querySelector(".move")
   span.style.display = "none"
 })
 
 
+// CRIAÇÃO E ESTILIZAÇÃO DE UMA TAG SPAN
 export const Span = styled.span`
   position: fixed;
   top: 20px;
@@ -44,6 +52,8 @@ function App() {
       <div className="app"> 
         <Header></Header>
         <main>
+
+          {/* ORGANIZAÇÃO DO QUE VAI SER RENDERIZADO EM TELA A DEPENDER DA ROTA */}
           <Routes className="main">
             <Route path="/Formulario-MySQL" element={<Formulario/>}/>
             <Route path="/Consultar" element={<Consulta/>}/>
@@ -51,6 +61,8 @@ function App() {
         </main>
         <Footer></Footer>
       </div>
+
+      {/* SPAN QUE FICA GRUDADO NO MOUSE PRA DAR O EFEITO DE "LUZ" */}
       <Span className="move"></Span>
     </>
   )

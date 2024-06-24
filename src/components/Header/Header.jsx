@@ -1,5 +1,9 @@
+
+// IMPORTE DAS TAGS ESTILIZADAS
 import { Ul, Wrapper, Logo, Li, Topo } from "./StyleHeader"
 
+
+// IMPORTE DO REACT-ROUTER-DOM
 import { Link } from "react-router-dom"
 
 export default function Header() {
